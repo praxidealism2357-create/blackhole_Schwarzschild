@@ -5,9 +5,7 @@ from scipy.integrate import solve_ivp
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
-# ---------------------------------------------------------------------------
-# Métrica y símbolos de Christoffel (se calculan UNA sola vez)
-# ---------------------------------------------------------------------------
+
 t, r, theta, phi = sp.symbols('t r theta phi')
 c, r_s = sp.symbols('c r_s', positive=True)
 coords = [t, r, theta, phi]
@@ -72,9 +70,6 @@ cruza_horizonte.terminal = True
 cruza_horizonte.direction = -1
 
 
-# ---------------------------------------------------------------------------
-# Todo lo que dependía de MODO ahora vive dentro de una función
-# ---------------------------------------------------------------------------
 animaciones = []
 def simular(MODO):
     print(f"\n=== Modo: {MODO} ===")
@@ -236,7 +231,6 @@ def simular(MODO):
     anim.save(gif_path, writer=animation.PillowWriter(fps=25))
     print(f"GIF guardado en {gif_path}")
 
-    # Liberar la figura de la animación (la estática se queda para plt.show())
     animaciones.append(anim)
 
 
